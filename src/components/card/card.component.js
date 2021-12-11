@@ -14,7 +14,7 @@ const Card = ({ card, handleChoice, isFlipped, disabled }) => {
                 className='card-back'
                 alt="back"
                 onClick={() => !disabled && handleChoice(card)}
-                src="cards/cardBack.jpg"
+                src="cards/cardback.jpg"
             />
         </div>
 
