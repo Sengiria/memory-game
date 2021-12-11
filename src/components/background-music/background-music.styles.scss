@@ -2,8 +2,9 @@
     width: 65px;
     margin: 10px auto;
     background: #5270ca;
+    cursor: pointer;
 
-    img {
+    &-image {
         height: 60px;
     }
 }

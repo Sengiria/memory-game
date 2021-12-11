@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './background-music.styles.scss';
 
 const BackgroundMusic = ({url}) => {
     const [audio] = useState(new Audio(url));
@@ -21,7 +22,7 @@ const BackgroundMusic = ({url}) => {
 
     return (
         <div className="sound-toggle">
-            <img onClick={toggle} src={`sound/${playing ? "mute" : "sound"}.png`} alt="sound" />
+            <img className="sound-toggle-image" onClick={toggle} src={`sound/${playing ? "mute" : "sound"}.png`} alt="sound" />
         </div>
     )
 };
