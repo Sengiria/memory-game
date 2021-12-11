@@ -3,6 +3,7 @@ import CustomButton from './components/custom-button/custom-button.component';
 import { useEffect, useState } from "react";
 import cardsArray from './assets/cards.data';
 import Card from './components/card/card.component';
+import Victory from './components/victory/victory.component';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -10,6 +11,7 @@ function App() {
   const [firstCard, setFirstCard] = useState(null)
   const [secondCard, setSecondCard] = useState(null)
   const [disabled, setDisabled] = useState(false)
+  const [gameWon, setGameWon] = useState(false)
 
   const shuffleCards = () => {
     const shuffledCards = [...cardsArray, ...cardsArray] //duplicate items
@@ -22,7 +24,6 @@ function App() {
 
   const handleChoice = (card) => {
     firstCard ? setSecondCard(card) : setFirstCard(card)
-    console.log(card)
   }
 
   //fires when firstCard or secondCard change and when the component mounts
@@ -30,21 +31,17 @@ function App() {
     if (secondCard) {
       setDisabled(true)
       if (firstCard.type === secondCard.type) {
-        console.log('those cards match')
-
         setCards(prevCards => (
           prevCards.map(card => (
             card.type === secondCard.type ? { ...card, matched: true } : card
           ))
         ))
-
-      } else {
-        console.log('Those cards do not match')
       }
-      setTimeout(()=>resetTurn(), 1000)
+      setTimeout(()=>resetTurn(), 1000) 
     }
-  }, [secondCard])
 
+    if(secondCard === null) endGame()
+  }, [secondCard])
 
   //reset chosen cards and increment number of turns
   const resetTurn = () => {
@@ -54,19 +51,33 @@ function App() {
     setDisabled(false)
   }
 
+  const endGame = () => {
+    const gameOver = cards.every((card)=>(
+      card.matched === true
+    ))
+    if( gameOver ) {
+      setGameWon(true)
+      setCards([])
+    }
+  }
+
   return (
     <div className="App">
 
-     <div class="snow layer1 a"></div>
-     <div class="snow layer1"></div> 
-     <div class="snow layer2 a"></div>
-     <div class="snow layer2"></div>
-     <div class="snow layer3 a"></div>
-     <div class="snow layer3"></div>
+     <div className="snow layer1 a"></div>
+     <div className="snow layer1"></div> 
+     <div className="snow layer2 a"></div>
+     <div className="snow layer2"></div>
+     <div className="snow layer3 a"></div>
+     <div className="snow layer3"></div>
 
       <h1 className='title'>Memory Game</h1>
       <CustomButton handleClick={shuffleCards}>New game</CustomButton>
       <h2 className='subtitle'> Turns: {turns} </h2>
+      {
+        gameWon && <Victory />
+      }
+      
       <div className='card-container'>
         {
           cards.map((card) => (
