@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import cardsArray from './assets/cards.data';
 import Card from './components/card/card.component';
 import Victory from './components/victory/victory.component';
+import BackgroundMusic from './components/background-music/background-music.component';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -13,7 +14,7 @@ function App() {
   const [disabled, setDisabled] = useState(false)
   const [gameWon, setGameWon] = useState(false)
 
-  console.log(gameWon)
+
   const shuffleCards = () => {
     setGameWon(false)
     const shuffledCards = [...cardsArray, ...cardsArray] //duplicate items
@@ -81,7 +82,7 @@ function App() {
       {
         gameWon && <Victory />
       }
-      
+      <BackgroundMusic url="https://play.publicradio.org/web/o/minnesota/classical/programs/free-downloads/2018/10/18/daily_download_20181018_128.mp3" />
       <div className='card-container'>
         {
           cards.map((card) => (
