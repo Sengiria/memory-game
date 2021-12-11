@@ -3,7 +3,7 @@ import './background-music.styles.scss';
 
 const BackgroundMusic = ({url}) => {
     const [audio] = useState(new Audio(url));
-    const [playing, setPlaying] = useState(true);
+    const [playing, setPlaying] = useState(false);
 
     const toggle = () => setPlaying(!playing);
 
@@ -14,6 +14,7 @@ const BackgroundMusic = ({url}) => {
     );
 
     useEffect(() => {
+        audio.autoplay = true
         audio.addEventListener('ended', () => setPlaying(false));
         return () => {
             audio.removeEventListener('ended', () => setPlaying(false));
@@ -22,7 +23,7 @@ const BackgroundMusic = ({url}) => {
 
     return (
         <div className="sound-toggle">
-            <img className="sound-toggle-image" onClick={toggle} src={`sound/${playing ? "mute" : "sound"}.png`} alt="sound" />
+            <img className="sound-toggle-image" onClick={toggle} src={`sound/${playing ? "sound" : "mute"}.png`} alt="sound" />
         </div>
     )
 };
