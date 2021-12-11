@@ -21,7 +21,7 @@ const BackgroundMusic = ({url}) => {
 
     return (
         <div className="sound-toggle">
-            <img onClick={toggle} src={`assets/${playing ? "mute" : "sound"}.png`} alt="sound" />
+            <img onClick={toggle} src={`sound/${playing ? "mute" : "sound"}.png`} alt="sound" />
         </div>
     )
 };
