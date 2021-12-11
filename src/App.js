@@ -10,7 +10,6 @@ function App() {
   const [firstCard, setFirstCard] = useState(null)
   const [secondCard, setSecondCard] = useState(null)
   const [disabled, setDisabled] = useState(false)
-  const [snow, setSnow] = useState([])
 
   const shuffleCards = () => {
     const shuffledCards = [...cardsArray, ...cardsArray] //duplicate items
@@ -25,14 +24,6 @@ function App() {
     firstCard ? setSecondCard(card) : setFirstCard(card)
     console.log(card)
   }
-
-  useEffect(()=> {
-    const snowflakes = []
-
-    for(let i = 0; i < 40; i++){
-      snowflakes.push(i.toString())
-    }
-  }, [])
 
   //fires when firstCard or secondCard change and when the component mounts
   useEffect(() => {
@@ -75,7 +66,7 @@ function App() {
 
       <h1 className='title'>Memory Game</h1>
       <CustomButton handleClick={shuffleCards}>New game</CustomButton>
-      <p> Turns: {turns} </p>
+      <h2 className='subtitle'> Turns: {turns} </h2>
       <div className='card-container'>
         {
           cards.map((card) => (
