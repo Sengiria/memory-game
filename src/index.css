@@ -1,7 +1,14 @@
 body {
   margin: 0;
   text-align: center;
-  background: #1b1523;
+  background: linear-gradient(#123, #111);
   color: #fff;
+  position: relative;
+  min-height: 100vh;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
 }
 

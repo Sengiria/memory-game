@@ -22,6 +22,14 @@ const cardsArray = [
     {
       type: "snowman",
       image: 'cards/snowman.png'
+    },
+    {
+      type: "bell",
+      image: 'cards/bell.png'
+    },
+    {
+      type: "lollipop",
+      image: 'cards/lollipop.png'
     }
   ];
 

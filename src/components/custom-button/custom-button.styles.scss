@@ -4,6 +4,7 @@ $glow: #5270ca;
 
 .custom-button {
 	display: inline-block;
+	margin: 5px;
 	-webkit-box-sizing:border-box;
 	   -moz-box-sizing:border-box;
 	        box-sizing:border-box;
@@ -58,19 +59,6 @@ $glow: #5270ca;
 
     &:focus {
         outline: none; /*FF*/
-    }
-
-    &:active {
-        box-shadow:
-		inset 1px 1px 0px rgba(255,255,255,0.25), /* highlight */
-		inset 0 0 6px #da3b2c, /* inner glow */
-		inset 0 80px 80px -40px #dd4330, /* gradient */
-		0px 1px 0px rgba(255,255,255,0.25); /* shadow */
-		
-	-webkit-transition: 50ms linear;
-	   -moz-transition: 50ms linear;
-	     -o-transition: 50ms linear;
-	        transition: 50ms linear;
     }
 }
 
