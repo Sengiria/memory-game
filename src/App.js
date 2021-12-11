@@ -13,7 +13,9 @@ function App() {
   const [disabled, setDisabled] = useState(false)
   const [gameWon, setGameWon] = useState(false)
 
+  console.log(gameWon)
   const shuffleCards = () => {
+    setGameWon(false)
     const shuffledCards = [...cardsArray, ...cardsArray] //duplicate items
       .sort(() => Math.random() - 0.5)  // negative => switch order, positive => do nothing
       .map(card => ({ ...card, matched: false, id: Math.random() })) // assign a random id
@@ -52,12 +54,14 @@ function App() {
   }
 
   const endGame = () => {
-    const gameOver = cards.every((card)=>(
-      card.matched === true
-    ))
-    if( gameOver ) {
-      setGameWon(true)
-      setCards([])
+    if(cards.length > 0){
+      const gameOver = cards.every((card)=>(
+        card.matched === true
+      ))
+      if( gameOver ) {
+        setGameWon(true)
+        setCards([])
+      }
     }
   }
 
