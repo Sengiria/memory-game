@@ -71,10 +71,7 @@ function App() {
 
      <div className="snow layer1 a"></div>
      <div className="snow layer1"></div> 
-     <div className="snow layer2 a"></div>
-     <div className="snow layer2"></div>
-     <div className="snow layer3 a"></div>
-     <div className="snow layer3"></div>
+
 
       <h1 className='title'>Memory Game</h1>
       <CustomButton handleClick={shuffleCards}>New game</CustomButton>
